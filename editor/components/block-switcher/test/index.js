@@ -94,9 +94,17 @@ describe( 'BlockSwitcher', () => {
 			headingBlock1,
 		];
 
+		const inserterItems = [
+			{ name: 'core/quote', frecency: 1 },
+			{ name: 'core/cover-image', frecency: 2 },
+			{ name: 'core/paragraph', frecency: 3 },
+			{ name: 'core/heading', frecency: 4 },
+			{ name: 'core/text', frecency: 5 },
+		];
+
 		const onTransformStub = jest.fn();
 		const getDropdown = () => {
-			const blockSwitcher = shallow( <BlockSwitcher blocks={ blocks } onTransform={ onTransformStub } /> );
+			const blockSwitcher = shallow( <BlockSwitcher blocks={ blocks } onTransform={ onTransformStub } inserterItems={ inserterItems } /> );
 			return blockSwitcher.find( 'Dropdown' );
 		};
 
