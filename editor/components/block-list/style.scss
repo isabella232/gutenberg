@@ -104,14 +104,14 @@
 }
 
 .editor-block-list__layout {
-	// make room in the main content column for the side UI
-	// the side UI uses negative margins to position itself so as to not affect the block width
+	// Make room in the main content column for the side UI.
+	// The side UI uses negative margins to position itself so as to not affect the block width.
 	@include break-small() {
-		padding-left: $block-side-ui-padding;
-		padding-right: $block-side-ui-padding;
+		padding-left: $block-side-ui-width + $block-padding + $block-side-ui-clearance + $block-side-ui-clearance;
+		padding-right: $block-side-ui-width + $block-padding + $block-side-ui-clearance + $block-side-ui-clearance;
 	}
 
-	// Don't add side padding for nested blocks, @todo see if this can be scoped better
+	// Don't add side padding for nested blocks, @todo see if this can be scoped better.
 	.editor-block-list__block & {
 		padding-left: 0;
 		padding-right: 0;
@@ -424,6 +424,7 @@
 		> .editor-block-mover {
 			display: none;
 		}
+
 		@include break-wide() {
 			> .editor-block-mover {
 				display: block;
@@ -447,10 +448,10 @@
 			right: -1px;
 		}
 		
-		// compensate for main container padding, subtract border
+		// Compensate for main container padding and subtract border.
 		@include break-small() {
-			margin-left: -$block-side-ui-padding + 1px;
-			margin-right: -$block-side-ui-padding + 1px;
+			margin-left: -$block-side-ui-width - $block-padding - $block-side-ui-clearance - 1px;
+			margin-right: -$block-side-ui-width - $block-padding - $block-side-ui-clearance - 1px;
 		}
 
 		> .editor-block-list__block-edit {
@@ -462,7 +463,7 @@
 				margin-right: -$block-side-ui-padding - $block-padding;
 			}
 
-			// this explicitly sets the width of the block, to override the fit-content from the image block
+			// This explicitly sets the width of the block, to override the fit-content from the image block.
 			figure {
 				width: 100%;
 			}
@@ -806,7 +807,7 @@
 	border: 1px solid $light-gray-500;
 	border-right: none;
 
-	// this prevents floats from messing up the position
+	// This prevents floats from messing up the position.
 	position: absolute;
 	left: 0;
 
